@@ -338,7 +338,7 @@ function App() {
                   title: "Projects & Migrations",
                   desc: "Network upgrades, cloud moves, and modernisation without unnecessary disruption.",
                 },
-              ].map((item, idx) => (
+              ].map((item) => (
                 <article
                   key={item.title}
                   className="flex flex-col rounded-xl border-t-4 border-cyan-500/70 bg-white p-5 shadow-sm ring-1 ring-slate-200/70 transition hover:-translate-y-0.5 hover:shadow-lg"
