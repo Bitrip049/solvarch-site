@@ -191,7 +191,7 @@ function App() {
 
       <main className="relative pb-32">
         {/* Hero */}
-        <section className="border-b border-slate-200 bg-slate-50">
+        <section id="top" className="border-b border-slate-200 bg-slate-50">
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-4 py-16 lg:grid-cols-2 lg:py-24">
             <div className="space-y-6">
               <div className="inline-flex items-center gap-2 rounded-full bg-cyan-50 px-3 py-1 text-xs font-medium text-cyan-700">
@@ -516,6 +516,117 @@ function App() {
           </div>
         </section>
 
+        {/* Contact section with form */}
+        <section id="contact" className="bg-slate-50 py-16">
+          <div className="mx-auto max-w-6xl px-4 md:grid md:grid-cols-2 md:gap-10">
+            <div className="mb-10 md:mb-0">
+              <p className="text-xs font-semibold uppercase tracking-wide text-cyan-700">
+                Contact
+              </p>
+              <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-slate-900 md:text-3xl">
+                Let&apos;s talk.
+              </h2>
+              <p className="mt-3 text-sm text-slate-600">
+                Share a few details about your environment and goals, and we&apos;ll
+                follow up with practical next steps. No pressure, no jargon.
+              </p>
+
+              <div className="mt-6 space-y-3 text-sm text-slate-700">
+                <p>Email: hello@solvarch.com.au</p>
+                <p>Phone: (02) 0000 0000</p>
+                <p>Location: Sydney, NSW</p>
+              </div>
+            </div>
+
+            <div className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200/70">
+              <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                className="space-y-4"
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700">
+                    Full name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700">
+                    Work email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700">
+                    Company name
+                  </label>
+                  <input
+                    type="text"
+                    name="company"
+                    className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700">
+                    Employee count
+                  </label>
+                  <select
+                    name="employeeCount"
+                    className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
+                  >
+                    <option>1–10</option>
+                    <option>11–50</option>
+                    <option>50+</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700">
+                    Primary pain point
+                  </label>
+                  <select
+                    name="painPoint"
+                    className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
+                  >
+                    <option>Frequent issues / downtime</option>
+                    <option>Security and compliance</option>
+                    <option>Cloud / Microsoft 365</option>
+                    <option>Strategy and planning</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700">
+                    Message
+                  </label>
+                  <textarea
+                    name="message"
+                    rows={4}
+                    className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="mt-2 w-full rounded-2xl bg-cyan-500 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-cyan-500/40 hover:bg-cyan-600"
+                >
+                  Request consultation
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+
         {/* Floating CTA above footer */}
         <section className="relative z-10 -mb-24 pointer-events-none">
           <div className="mx-auto max-w-6xl px-4">
@@ -539,15 +650,24 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer id="contact" className="relative z-0 bg-slate-950 pt-28 pb-10 text-slate-200">
+      <footer id="site-footer" className="relative z-0 bg-slate-950 pt-28 pb-10 text-slate-200">
         <div className="mx-auto max-w-6xl px-4">
           <div className="grid gap-10 md:grid-cols-4">
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-cyan-500 text-xs font-bold text-white">
-                  S
+                <img
+                  src={logo}
+                  alt="Solvarch logo"
+                  className="h-10 w-10 rounded-xl object-cover shadow-lg shadow-cyan-500/30"
+                />
+                <div className="leading-tight">
+                  <div className="text-sm font-extrabold uppercase tracking-wide text-slate-50">
+                    Solvarch
+                  </div>
+                  <div className="text-[11px] text-slate-400">
+                    Managed IT • Cloud • Cybersecurity
+                  </div>
                 </div>
-                <span className="text-sm font-semibold">Solvarch</span>
               </div>
               <p className="text-xs text-slate-400">
                 Your trusted partner in managed IT, cybersecurity, and cloud for
@@ -558,19 +678,75 @@ function App() {
             <div>
               <h3 className="text-xs font-semibold text-slate-200">Services</h3>
               <ul className="mt-3 space-y-2 text-xs text-slate-400">
-                <li>Managed IT</li>
-                <li>Cyber Security</li>
-                <li>Microsoft 365 &amp; Cloud</li>
-                <li>AI Enablement</li>
+                <li>
+                  <button
+                    type="button"
+                    className="hover:text-slate-200"
+                    onClick={() => navTo("#services")}
+                  >
+                    Managed IT
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    className="hover:text-slate-200"
+                    onClick={() => navTo("#services")}
+                  >
+                    Cyber Security
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    className="hover:text-slate-200"
+                    onClick={() => navTo("#services")}
+                  >
+                    Microsoft 365 &amp; Cloud
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    className="hover:text-slate-200"
+                    onClick={() => navTo("#services")}
+                  >
+                    AI Enablement
+                  </button>
+                </li>
               </ul>
             </div>
 
             <div>
               <h3 className="text-xs font-semibold text-slate-200">Company</h3>
               <ul className="mt-3 space-y-2 text-xs text-slate-400">
-                <li>About</li>
-                <li>Case Studies</li>
-                <li>Business Outcomes</li>
+                <li>
+                  <button
+                    type="button"
+                    className="hover:text-slate-200"
+                    onClick={() => navTo("#top")}
+                  >
+                    About
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    className="hover:text-slate-200"
+                    onClick={() => navTo("#case-studies")}
+                  >
+                    Case Studies
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    className="hover:text-slate-200"
+                    onClick={() => navTo("#outcomes")}
+                  >
+                    Business Outcomes
+                  </button>
+                </li>
               </ul>
             </div>
 
