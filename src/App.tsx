@@ -35,7 +35,18 @@ function App() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = "Solvarch | Enterprise Managed IT Sydney";
   }, []);
+
+  const navTo = (hash: string) => {
+    setMobileOpen(false);
+    const el = document.querySelector(hash);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      window.location.hash = hash;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
@@ -59,16 +70,44 @@ function App() {
           </div>
 
           <nav className="hidden items-center gap-4 text-sm font-medium text-slate-700 lg:flex">
-            <a href="#services" className="hover:text-slate-900">
+            <a
+              href="#services"
+              className="hover:text-slate-900"
+              onClick={(e) => {
+                e.preventDefault();
+                navTo("#services");
+              }}
+            >
               Services
             </a>
-            <a href="#ai" className="hover:text-slate-900">
+            <a
+              href="#ai"
+              className="hover:text-slate-900"
+              onClick={(e) => {
+                e.preventDefault();
+                navTo("#ai");
+              }}
+            >
               AI Enablement
             </a>
-            <a href="#outcomes" className="hover:text-slate-900">
+            <a
+              href="#outcomes"
+              className="hover:text-slate-900"
+              onClick={(e) => {
+                e.preventDefault();
+                navTo("#outcomes");
+              }}
+            >
               Business Outcomes
             </a>
-            <a href="#case-studies" className="hover:text-slate-900">
+            <a
+              href="#case-studies"
+              className="hover:text-slate-900"
+              onClick={(e) => {
+                e.preventDefault();
+                navTo("#case-studies");
+              }}
+            >
               Case Studies
             </a>
           </nav>
@@ -95,22 +134,53 @@ function App() {
         {mobileOpen && (
           <div className="relative z-50 border-t border-slate-200 bg-white lg:hidden">
             <nav className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-3 text-sm font-medium text-slate-700">
-              <a href="#services" className="py-1" onClick={() => setMobileOpen(false)}>
+              <a
+                href="#services"
+                className="py-1"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navTo("#services");
+                }}
+              >
                 Services
               </a>
-              <a href="#ai" className="py-1" onClick={() => setMobileOpen(false)}>
+              <a
+                href="#ai"
+                className="py-1"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navTo("#ai");
+                }}
+              >
                 AI Enablement
               </a>
-              <a href="#outcomes" className="py-1" onClick={() => setMobileOpen(false)}>
+              <a
+                href="#outcomes"
+                className="py-1"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navTo("#outcomes");
+                }}
+              >
                 Business Outcomes
               </a>
-              <a href="#case-studies" className="py-1" onClick={() => setMobileOpen(false)}>
+              <a
+                href="#case-studies"
+                className="py-1"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navTo("#case-studies");
+                }}
+              >
                 Case Studies
               </a>
               <a
                 href="#contact"
                 className="mt-2 rounded-xl bg-cyan-500 px-4 py-2 text-center text-sm font-semibold text-white hover:bg-cyan-600"
-                onClick={() => setMobileOpen(false)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  navTo("#contact");
+                }}
               >
                 Contact Us
               </a>

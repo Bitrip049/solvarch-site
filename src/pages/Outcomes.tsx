@@ -3,6 +3,7 @@ import { useEffect } from "react";
 function Outcomes() {
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = "Business Outcomes | Solvarch";
   }, []);
   const stats = [
     { label: "Uptime", value: "99.9%" },

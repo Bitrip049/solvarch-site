@@ -3,6 +3,7 @@ import { useEffect } from "react";
 function AIEnablement() {
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = "AI Enablement | Solvarch";
   }, []);
   const steps = ["Assessment", "Licensing", "Training", "Automation"];
   const useCases = [

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 function Services() {
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = "Services | Solvarch";
   }, []);
   const services = [
     {
