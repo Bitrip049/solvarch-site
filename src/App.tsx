@@ -517,9 +517,9 @@ function App() {
         </section>
 
         {/* Floating CTA above footer */}
-        <section className="relative z-10 -mb-24">
+        <section className="relative z-10 -mb-24 pointer-events-none">
           <div className="mx-auto max-w-6xl px-4">
-            <div className="rounded-2xl bg-gradient-to-r from-cyan-500 to-indigo-700 px-6 py-8 text-white shadow-[0_25px_60px_rgba(15,23,42,0.4)] md:flex md:items-center md:justify-between">
+            <div className="pointer-events-auto rounded-2xl bg-gradient-to-r from-cyan-500 to-indigo-700 px-6 py-8 text-white shadow-[0_25px_60px_rgba(15,23,42,0.4)] md:flex md:items-center md:justify-between">
               <div>
                 <h2 className="text-lg font-semibold">Ready to secure your IT?</h2>
                 <p className="mt-2 text-sm text-cyan-100">
@@ -539,11 +539,11 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer id="contact" className="bg-slate-950 pt-28 pb-10 text-slate-200">
+      <footer id="contact" className="relative z-0 bg-slate-950 pt-28 pb-10 text-slate-200">
         <div className="mx-auto max-w-6xl px-4">
           <div className="grid gap-10 md:grid-cols-4">
             <div className="space-y-3">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-cyan-500 text-xs font-bold text-white">
                   S
                 </div>
