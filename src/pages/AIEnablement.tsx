@@ -1,4 +1,9 @@
+import { useEffect } from "react";
+
 function AIEnablement() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const steps = ["Assessment", "Licensing", "Training", "Automation"];
   const useCases = [
     {

@@ -1,4 +1,9 @@
+import { useEffect } from "react";
+
 function Outcomes() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const stats = [
     { label: "Uptime", value: "99.9%" },
     { label: "Cost reduction", value: "30%" },

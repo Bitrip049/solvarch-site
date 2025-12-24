@@ -3,7 +3,11 @@ import logo from "../assets/solvarch-logo.jpg";
 
 function Header() {
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
-    `text-sm font-medium ${isActive ? "text-slate-900" : "text-slate-700"}`;
+    `relative pb-2 text-sm font-medium border-b-2 ${
+      isActive
+        ? "text-cyan-500 border-cyan-500"
+        : "text-slate-600 border-transparent hover:text-slate-900"
+    }`;
 
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">

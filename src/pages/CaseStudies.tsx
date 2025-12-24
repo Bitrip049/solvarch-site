@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type CaseStudy = {
   id: string;
@@ -51,6 +51,10 @@ const CASES: CaseStudy[] = [
 
 function CaseStudies() {
   const [active, setActive] = useState<CaseStudy | null>(CASES[0] ?? null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <main className="bg-slate-50 pb-24 pt-10">

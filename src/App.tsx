@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "./assets/solvarch-logo.jpg";
 
 type FaqItem = {
@@ -32,6 +32,10 @@ const faqs: FaqItem[] = [
 function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<string | null>(faqs[0]?.question ?? null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
@@ -80,16 +84,16 @@ function App() {
 
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-xl border border-slate-200 px-2 py-2 text-slate-700 lg:hidden"
+            className="inline-flex items-center justify-center rounded-xl border border-slate-200 px-3 py-2 text-slate-700 lg:hidden"
             onClick={() => setMobileOpen((v) => !v)}
           >
             <span className="sr-only">Toggle navigation</span>
-            <span className="i-[hamburger]">☰</span>
+            <span className="text-2xl">☰</span>
           </button>
         </div>
 
         {mobileOpen && (
-          <div className="border-t border-slate-200 bg-white lg:hidden">
+          <div className="relative z-50 border-t border-slate-200 bg-white lg:hidden">
             <nav className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-3 text-sm font-medium text-slate-700">
               <a href="#services" className="py-1" onClick={() => setMobileOpen(false)}>
                 Services
@@ -118,7 +122,7 @@ function App() {
       <main className="relative pb-32">
         {/* Hero */}
         <section className="border-b border-slate-200 bg-slate-50">
-          <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 md:grid-cols-2 md:py-24">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-4 py-16 lg:grid-cols-2 lg:py-24">
             <div className="space-y-6">
               <div className="inline-flex items-center gap-2 rounded-full bg-cyan-50 px-3 py-1 text-xs font-medium text-cyan-700">
                 <span className="h-2 w-2 rounded-full bg-cyan-400" />
@@ -154,7 +158,7 @@ function App() {
               </div>
             </div>
 
-            <div className="relative flex items-center justify-center">
+            <div className="relative mt-12 flex w-full items-center justify-center lg:mt-0">
               <div className="relative h-64 w-full max-w-md overflow-hidden rounded-2xl bg-gradient-to-br from-cyan-400 via-sky-500 to-indigo-700 p-0.5 shadow-[0_30px_80px_rgba(15,23,42,0.35)]">
                 <div className="flex h-full w-full flex-col justify-between rounded-2xl bg-slate-950/90 p-6 text-slate-50">
                   <div className="flex items-center justify-between">
@@ -443,7 +447,7 @@ function App() {
         </section>
 
         {/* Floating CTA above footer */}
-        <section className="relative z-20 -mb-24">
+        <section className="relative z-10 -mb-24">
           <div className="mx-auto max-w-6xl px-4">
             <div className="rounded-2xl bg-gradient-to-r from-cyan-500 to-indigo-700 px-6 py-8 text-white shadow-[0_25px_60px_rgba(15,23,42,0.4)] md:flex md:items-center md:justify-between">
               <div>

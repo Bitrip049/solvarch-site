@@ -4,7 +4,7 @@ function Footer() {
       <div className="mx-auto max-w-6xl px-4">
         <div className="grid gap-10 md:grid-cols-4">
           <div className="space-y-3">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-cyan-500 text-xs font-bold text-white">
                 S
               </div>

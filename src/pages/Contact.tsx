@@ -1,4 +1,9 @@
+import { useEffect } from "react";
+
 function Contact() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <main className="bg-slate-50 pb-24 pt-10">
       <section className="mx-auto max-w-6xl px-4 md:grid md:grid-cols-2 md:gap-10">
