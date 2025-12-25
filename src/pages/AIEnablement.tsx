@@ -1,4 +1,9 @@
 import { useEffect } from "react";
+import {
+  CpuChipIcon,
+  ChartBarIcon,
+  ChatBubbleBottomCenterTextIcon,
+} from "@heroicons/react/24/outline";
 
 function AIEnablement() {
   useEffect(() => {
@@ -10,14 +15,17 @@ function AIEnablement() {
     {
       title: "Automated reporting",
       desc: "Generate board and finance reports from live data instead of manual spreadsheets.",
+      icon: ChartBarIcon,
     },
     {
       title: "Customer service bots",
       desc: "Triage simple requests and FAQs so your team can focus on higher-value work.",
+      icon: ChatBubbleBottomCenterTextIcon,
     },
     {
       title: "Code generation",
       desc: "Support internal tools and scripts with AI-assisted development.",
+      icon: CpuChipIcon,
     },
   ];
 
@@ -71,7 +79,7 @@ function AIEnablement() {
                 className="rounded-2xl bg-slate-900/80 p-5 shadow-[0_25px_80px_rgba(8,47,73,0.7)] ring-1 ring-cyan-500/30"
               >
                 <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-cyan-500/20 text-cyan-300">
-                  ✨
+                  <item.icon className="h-4 w-4" />
                 </div>
                 <h3 className="text-sm font-semibold text-slate-50">{item.title}</h3>
                 <p className="mt-2 text-xs text-slate-300">{item.desc}</p>

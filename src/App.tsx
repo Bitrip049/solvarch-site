@@ -1,5 +1,17 @@
 import { useEffect, useState } from "react";
-import logo from "./assets/solvarch-logo.jpg";
+import { useNavigate } from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import {
+  ShieldCheckIcon,
+  CpuChipIcon,
+  CloudArrowUpIcon,
+  UsersIcon,
+  BuildingOffice2Icon,
+  WrenchScrewdriverIcon,
+  BanknotesIcon,
+  HandThumbUpIcon,
+} from "@heroicons/react/24/outline";
 
 type FaqItem = {
   question: string;
@@ -30,164 +42,17 @@ const faqs: FaqItem[] = [
 ];
 
 function App() {
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<string | null>(faqs[0]?.question ?? null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Solvarch | Enterprise Managed IT Sydney";
   }, []);
 
-  const navTo = (hash: string) => {
-    setMobileOpen(false);
-    const el = document.querySelector(hash);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    } else {
-      window.location.hash = hash;
-    }
-  };
-
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
-      {/* Header */}
-      <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-          <div className="flex items-center gap-3">
-            <img
-              src={logo}
-              alt="Solvarch logo"
-              className="h-14 w-14 rounded-2xl object-cover shadow-lg shadow-cyan-500/30"
-            />
-            <div className="leading-tight">
-              <div className="text-sm font-extrabold uppercase tracking-wide text-slate-900">
-                Solvarch
-              </div>
-              <div className="text-[11px] text-slate-500">
-                Managed IT Services • Cloud • Cybersecurity
-              </div>
-            </div>
-          </div>
-
-          <nav className="hidden items-center gap-4 text-sm font-medium text-slate-700 lg:flex">
-            <a
-              href="#services"
-              className="hover:text-slate-900"
-              onClick={(e) => {
-                e.preventDefault();
-                navTo("#services");
-              }}
-            >
-              Services
-            </a>
-            <a
-              href="#ai"
-              className="hover:text-slate-900"
-              onClick={(e) => {
-                e.preventDefault();
-                navTo("#ai");
-              }}
-            >
-              AI Enablement
-            </a>
-            <a
-              href="#outcomes"
-              className="hover:text-slate-900"
-              onClick={(e) => {
-                e.preventDefault();
-                navTo("#outcomes");
-              }}
-            >
-              Business Outcomes
-            </a>
-            <a
-              href="#case-studies"
-              className="hover:text-slate-900"
-              onClick={(e) => {
-                e.preventDefault();
-                navTo("#case-studies");
-              }}
-            >
-              Case Studies
-            </a>
-          </nav>
-
-          <div className="hidden items-center gap-4 lg:flex">
-            <a
-              href="#contact"
-              className="rounded-2xl bg-cyan-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-cyan-500/40 hover:bg-cyan-600"
-            >
-              Book discovery call
-            </a>
-          </div>
-
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-xl border border-slate-200 px-3 py-2 text-slate-700 lg:hidden"
-            onClick={() => setMobileOpen((v) => !v)}
-          >
-            <span className="sr-only">Toggle navigation</span>
-            <span className="text-2xl">☰</span>
-          </button>
-        </div>
-
-        {mobileOpen && (
-          <div className="relative z-50 border-t border-slate-200 bg-white lg:hidden">
-            <nav className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-3 text-sm font-medium text-slate-700">
-              <a
-                href="#services"
-                className="py-1"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navTo("#services");
-                }}
-              >
-                Services
-              </a>
-              <a
-                href="#ai"
-                className="py-1"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navTo("#ai");
-                }}
-              >
-                AI Enablement
-              </a>
-              <a
-                href="#outcomes"
-                className="py-1"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navTo("#outcomes");
-                }}
-              >
-                Business Outcomes
-              </a>
-              <a
-                href="#case-studies"
-                className="py-1"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navTo("#case-studies");
-                }}
-              >
-                Case Studies
-              </a>
-              <a
-                href="#contact"
-                className="mt-2 rounded-xl bg-cyan-500 px-4 py-2 text-center text-sm font-semibold text-white hover:bg-cyan-600"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navTo("#contact");
-                }}
-              >
-                Contact Us
-              </a>
-            </nav>
-          </div>
-        )}
-      </header>
+      <Header />
 
       <main className="relative pb-32">
         {/* Hero */}
@@ -212,12 +77,20 @@ function App() {
                 <a
                   href="#contact"
                   className="rounded-2xl bg-cyan-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-cyan-500/40 hover:bg-cyan-600"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate("/contact");
+                  }}
                 >
                   Book discovery call
                 </a>
                 <a
                   href="#services"
                   className="rounded-2xl border border-cyan-200 bg-white px-5 py-2.5 text-sm font-semibold text-cyan-700 hover:border-cyan-300"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate("/services");
+                  }}
                 >
                   View services
                 </a>
@@ -228,19 +101,19 @@ function App() {
               </div>
             </div>
 
-            <div className="relative mt-12 flex w-full items-center justify-center lg:mt-0">
+            <div className="relative mt-12 flex w-full flex-col items-center justify-center gap-4 lg:mt-0">
               <div className="relative h-64 w-full max-w-md overflow-hidden rounded-2xl bg-gradient-to-br from-cyan-400 via-sky-500 to-indigo-700 p-0.5 shadow-[0_30px_80px_rgba(15,23,42,0.35)]">
                 <div className="flex h-full w-full flex-col justify-between rounded-2xl bg-slate-950/90 p-6 text-slate-50">
                   <div className="flex items-center justify-between">
                     <div className="space-y-1">
                       <p className="text-[10px] font-semibold uppercase tracking-wide text-cyan-200">
-                        Solvarch
+                        Live health overview
                       </p>
                       <p className="text-xs text-slate-400">Security posture</p>
                       <p className="text-lg font-semibold">Improving</p>
                     </div>
                     <div className="flex h-8 w-8 items-center justify-center rounded-full bg-cyan-500/20 text-cyan-200">
-                      🔒
+                      <ShieldCheckIcon className="h-5 w-5" />
                     </div>
                   </div>
                   <div className="grid grid-cols-3 gap-4 text-xs">
@@ -263,8 +136,29 @@ function App() {
                       <p className="text-sm font-semibold">Active on core systems</p>
                     </div>
                     <div className="flex h-6 w-6 items-center justify-center rounded-full bg-cyan-500/20 text-cyan-200 text-xs">
-                      ⚙️
+                      <CpuChipIcon className="h-4 w-4" />
                     </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid w-full max-w-md grid-cols-2 gap-3 text-xs text-slate-200">
+                <div className="flex items-center gap-3 rounded-2xl bg-slate-900/90 px-4 py-3 shadow-sm shadow-slate-900/40">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-cyan-500/15 text-cyan-300">
+                    <CloudArrowUpIcon className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <p className="text-[11px] uppercase tracking-wide text-slate-400">Cloud uptime</p>
+                    <p className="text-sm font-semibold">99.95%</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 rounded-2xl bg-slate-900/90 px-4 py-3 shadow-sm shadow-slate-900/40">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-300">
+                    <UsersIcon className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <p className="text-[11px] uppercase tracking-wide text-slate-400">Staff supported</p>
+                    <p className="text-sm font-semibold">25–250 seats</p>
                   </div>
                 </div>
               </div>
@@ -308,26 +202,30 @@ function App() {
                 {
                   title: "Solutions that fit",
                   desc: "We design IT that matches your size, risk profile, and industry.",
+                  icon: BuildingOffice2Icon,
                 },
                 {
                   title: "Fewer disruptions",
                   desc: "Proactive monitoring and patching reduce costly downtime.",
+                  icon: WrenchScrewdriverIcon,
                 },
                 {
                   title: "Future edge",
                   desc: "We help you adopt cloud and AI in practical, secure ways.",
+                  icon: CpuChipIcon,
                 },
                 {
                   title: "Local support",
                   desc: "Sydney-based team that understands how local businesses operate.",
+                  icon: UsersIcon,
                 },
               ].map((item) => (
                 <article
                   key={item.title}
                   className="rounded-xl bg-white p-5 shadow-sm ring-1 ring-slate-200/70 transition hover:-translate-y-0.5 hover:shadow-lg"
                 >
-                  <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-50 text-cyan-600 text-sm">
-                    ✨
+                  <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-50 text-cyan-600">
+                    <item.icon className="h-4 w-4" />
                   </div>
                   <h3 className="text-sm font-semibold text-slate-900">{item.title}</h3>
                   <p className="mt-2 text-xs text-slate-600">{item.desc}</p>
@@ -338,38 +236,77 @@ function App() {
         </section>
 
         {/* Industries */}
-        <section id="industries" className="bg-slate-900 py-16 text-slate-50">
+        <section id="industries" className="bg-slate-950 py-16 text-slate-50">
           <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-2">
             <div>
               <h2 className="text-2xl font-semibold text-white">
-                Helping organisations stay secure and work smarter.
+                Trusted by teams that can&apos;t afford downtime.
               </h2>
               <p className="mt-3 text-sm text-slate-300">
-                We partner with small to mid-sized organisations that need dependable,
-                secure, and future-focused IT.
+                We partner with small to mid-sized organisations that rely on secure,
+                always-on systems to serve their clients.
               </p>
               <ul className="mt-5 space-y-3 text-sm">
-                {[
-                  "Professional services and legal firms",
-                  "Construction and trades with mobile teams",
-                  "Financial services and advisory",
-                  "Not-for-profits and membership organisations",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <span className="mt-0.5 text-cyan-400">✔</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
+                <li className="flex items-start gap-2">
+                  <span className="mt-0.5 text-cyan-400">
+                    <BuildingOffice2Icon className="h-4 w-4" />
+                  </span>
+                  <span>Professional services and legal firms</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-0.5 text-cyan-400">
+                    <WrenchScrewdriverIcon className="h-4 w-4" />
+                  </span>
+                  <span>Construction and trades with mobile teams</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-0.5 text-cyan-400">
+                    <BanknotesIcon className="h-4 w-4" />
+                  </span>
+                  <span>Financial services and advisory</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-0.5 text-cyan-400">
+                    <HandThumbUpIcon className="h-4 w-4" />
+                  </span>
+                  <span>Not-for-profits and membership organisations</span>
+                </li>
               </ul>
+              <div className="mt-6 flex flex-wrap gap-4 text-xs text-slate-300">
+                <div className="rounded-2xl border border-slate-700 bg-slate-900/60 px-4 py-3">
+                  <p className="text-[11px] uppercase tracking-wide text-slate-400">Typical size</p>
+                  <p className="mt-1 text-sm font-semibold text-slate-100">25–250 staff</p>
+                </div>
+                <div className="rounded-2xl border border-slate-700 bg-slate-900/60 px-4 py-3">
+                  <p className="text-[11px] uppercase tracking-wide text-slate-400">Coverage</p>
+                  <p className="mt-1 text-sm font-semibold text-slate-100">Sydney &amp; surrounds</p>
+                </div>
+              </div>
             </div>
 
             <div className="flex items-center justify-center">
-              <div className="h-56 w-full max-w-md rounded-3xl border border-slate-700 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 p-0.5">
-                <div className="flex h-full items-center justify-center rounded-[22px] bg-slate-950/60">
-                  <p className="px-6 text-center text-xs text-slate-300">
-                    Placeholder for industry imagery or case study collage.
-                    Replace with your own visuals when ready.
-                  </p>
+              <div className="grid h-56 w-full max-w-md grid-cols-2 gap-3 rounded-3xl bg-slate-900 p-3 shadow-[0_24px_60px_rgba(15,23,42,0.7)]">
+                <div className="flex flex-col justify-between rounded-2xl border border-slate-700 bg-slate-950/70 p-4 text-[11px] text-slate-100">
+                  <p className="text-[11px] uppercase tracking-wide text-slate-400">Snapshot metrics</p>
+                  <div className="mt-2 space-y-1 text-xs">
+                    <p>• 98% of tickets resolved within SLA</p>
+                    <p>• &lt; 15 minutes average response time</p>
+                    <p>• Managed endpoints across Sydney &amp; surrounds</p>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-3">
+                  <div className="flex flex-1 items-center gap-3 rounded-2xl border border-slate-700 bg-slate-950/70 px-3 py-2 text-[11px] text-slate-100">
+                    <ShieldCheckIcon className="h-4 w-4 text-cyan-400" />
+                    <p>
+                      Security-first playbooks tailored to regulated and sensitive industries.
+                    </p>
+                  </div>
+                  <div className="flex flex-1 items-center gap-3 rounded-2xl border border-slate-700 bg-slate-950/70 px-3 py-2 text-[11px] text-slate-100">
+                    <UsersIcon className="h-4 w-4 text-emerald-400" />
+                    <p>
+                      Remote-first support with on-site visits when your team needs it.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -391,38 +328,54 @@ function App() {
                 {
                   title: "AI Enablement",
                   desc: "Identify practical AI use cases, deploy tools, and train your team to use them safely.",
+                  href: "/ai",
+                  icon: CpuChipIcon,
                 },
                 {
                   title: "Managed IT",
                   desc: "Helpdesk, device management, patching, and monitoring – all handled for you.",
+                  href: "/services#managed-it",
+                  icon: ShieldCheckIcon,
                 },
                 {
                   title: "Cyber Security",
                   desc: "Endpoint protection, identity security, MFA, and backup strategies.",
+                  href: "/services#cyber-security",
+                  icon: ShieldCheckIcon,
                 },
                 {
                   title: "Microsoft 365 & Cloud",
                   desc: "Best-practice setup for email, collaboration, and file storage.",
+                  href: "/services#cloud",
+                  icon: CloudArrowUpIcon,
                 },
                 {
                   title: "IT Consultancy",
                   desc: "Roadmaps, audits, and guidance that align technology with your business goals.",
+                  href: "/services#strategy",
+                  icon: BuildingOffice2Icon,
                 },
                 {
                   title: "Projects & Migrations",
                   desc: "Network upgrades, cloud moves, and modernisation without unnecessary disruption.",
+                  href: "/services#strategy",
+                  icon: WrenchScrewdriverIcon,
                 },
               ].map((item) => (
                 <article
                   key={item.title}
                   className="flex flex-col rounded-xl border-t-4 border-cyan-500/70 bg-white p-5 shadow-sm ring-1 ring-slate-200/70 transition hover:-translate-y-0.5 hover:shadow-lg"
                 >
-                  <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-cyan-50 text-cyan-600 text-sm">
-                    ✨
+                  <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-cyan-50 text-cyan-600">
+                    <item.icon className="h-5 w-5" />
                   </div>
                   <h3 className="text-sm font-semibold text-slate-900">{item.title}</h3>
                   <p className="mt-2 flex-1 text-xs text-slate-600">{item.desc}</p>
-                  <button className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-cyan-700 hover:text-cyan-800">
+                  <button
+                    type="button"
+                    onClick={() => navigate(item.href)}
+                    className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-cyan-700 hover:text-cyan-800"
+                  >
                     Learn more
                     <span aria-hidden>&rarr;</span>
                   </button>
@@ -516,117 +469,6 @@ function App() {
           </div>
         </section>
 
-        {/* Contact section with form */}
-        <section id="contact" className="bg-slate-50 py-16">
-          <div className="mx-auto max-w-6xl px-4 md:grid md:grid-cols-2 md:gap-10">
-            <div className="mb-10 md:mb-0">
-              <p className="text-xs font-semibold uppercase tracking-wide text-cyan-700">
-                Contact
-              </p>
-              <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-slate-900 md:text-3xl">
-                Let&apos;s talk.
-              </h2>
-              <p className="mt-3 text-sm text-slate-600">
-                Share a few details about your environment and goals, and we&apos;ll
-                follow up with practical next steps. No pressure, no jargon.
-              </p>
-
-              <div className="mt-6 space-y-3 text-sm text-slate-700">
-                <p>Email: hello@solvarch.com.au</p>
-                <p>Phone: (02) 0000 0000</p>
-                <p>Location: Sydney, NSW</p>
-              </div>
-            </div>
-
-            <div className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200/70">
-              <form
-                name="contact"
-                method="POST"
-                data-netlify="true"
-                className="space-y-4"
-              >
-                <input type="hidden" name="form-name" value="contact" />
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700">
-                    Full name
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700">
-                    Work email
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700">
-                    Company name
-                  </label>
-                  <input
-                    type="text"
-                    name="company"
-                    className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700">
-                    Employee count
-                  </label>
-                  <select
-                    name="employeeCount"
-                    className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
-                  >
-                    <option>1–10</option>
-                    <option>11–50</option>
-                    <option>50+</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700">
-                    Primary pain point
-                  </label>
-                  <select
-                    name="painPoint"
-                    className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
-                  >
-                    <option>Frequent issues / downtime</option>
-                    <option>Security and compliance</option>
-                    <option>Cloud / Microsoft 365</option>
-                    <option>Strategy and planning</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700">
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    rows={4}
-                    className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="mt-2 w-full rounded-2xl bg-cyan-500 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-cyan-500/40 hover:bg-cyan-600"
-                >
-                  Request consultation
-                </button>
-              </form>
-            </div>
-          </div>
-        </section>
-
         {/* Floating CTA above footer */}
         <section className="relative z-10 -mb-24 pointer-events-none">
           <div className="mx-auto max-w-6xl px-4">
@@ -641,6 +483,10 @@ function App() {
               <a
                 href="#contact"
                 className="mt-4 inline-flex items-center justify-center rounded-2xl bg-white px-5 py-2.5 text-sm font-semibold text-cyan-700 shadow-md hover:bg-cyan-50 md:mt-0"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/contact");
+                }}
               >
                 Book discovery call
               </a>
@@ -648,123 +494,7 @@ function App() {
           </div>
         </section>
       </main>
-
-      {/* Footer */}
-      <footer id="site-footer" className="relative z-0 bg-slate-950 pt-28 pb-10 text-slate-200">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="grid gap-10 md:grid-cols-4">
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <img
-                  src={logo}
-                  alt="Solvarch logo"
-                  className="h-10 w-10 rounded-xl object-cover shadow-lg shadow-cyan-500/30"
-                />
-                <div className="leading-tight">
-                  <div className="text-sm font-extrabold uppercase tracking-wide text-slate-50">
-                    Solvarch
-                  </div>
-                  <div className="text-[11px] text-slate-400">
-                    Managed IT • Cloud • Cybersecurity
-                  </div>
-                </div>
-              </div>
-              <p className="text-xs text-slate-400">
-                Your trusted partner in managed IT, cybersecurity, and cloud for
-                Sydney businesses.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-xs font-semibold text-slate-200">Services</h3>
-              <ul className="mt-3 space-y-2 text-xs text-slate-400">
-                <li>
-                  <button
-                    type="button"
-                    className="hover:text-slate-200"
-                    onClick={() => navTo("#services")}
-                  >
-                    Managed IT
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    className="hover:text-slate-200"
-                    onClick={() => navTo("#services")}
-                  >
-                    Cyber Security
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    className="hover:text-slate-200"
-                    onClick={() => navTo("#services")}
-                  >
-                    Microsoft 365 &amp; Cloud
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    className="hover:text-slate-200"
-                    onClick={() => navTo("#services")}
-                  >
-                    AI Enablement
-                  </button>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-xs font-semibold text-slate-200">Company</h3>
-              <ul className="mt-3 space-y-2 text-xs text-slate-400">
-                <li>
-                  <button
-                    type="button"
-                    className="hover:text-slate-200"
-                    onClick={() => navTo("#top")}
-                  >
-                    About
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    className="hover:text-slate-200"
-                    onClick={() => navTo("#case-studies")}
-                  >
-                    Case Studies
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    className="hover:text-slate-200"
-                    onClick={() => navTo("#outcomes")}
-                  >
-                    Business Outcomes
-                  </button>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-xs font-semibold text-slate-200">Contact</h3>
-              <ul className="mt-3 space-y-2 text-xs text-slate-400">
-                <li>Sydney, NSW</li>
-                <li>(02) 0000 0000</li>
-                <li>hello@solvarch.com.au</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-8 border-t border-slate-800 pt-4 text-xs text-slate-500">
-            © {new Date().getFullYear()} Solvarch. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

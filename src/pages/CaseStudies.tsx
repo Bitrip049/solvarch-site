@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { DocumentTextIcon } from "@heroicons/react/24/outline";
 
 type CaseStudy = {
   id: string;
@@ -80,7 +81,8 @@ function CaseStudies() {
               className="flex cursor-pointer flex-col rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200/70 transition hover:-translate-y-0.5 hover:shadow-lg"
               onClick={() => setActive(cs)}
             >
-              <span className="inline-flex w-fit rounded-full bg-cyan-50 px-2 py-1 text-[11px] font-semibold text-cyan-700">
+              <span className="inline-flex w-fit items-center gap-1 rounded-full bg-cyan-50 px-2 py-1 text-[11px] font-semibold text-cyan-700">
+                <DocumentTextIcon className="h-3 w-3" />
                 {cs.industry}
               </span>
               <h2 className="mt-3 text-sm font-semibold text-slate-900">

@@ -1,6 +1,15 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  ShieldCheckIcon,
+  CpuChipIcon,
+  CloudArrowUpIcon,
+  BuildingOffice2Icon,
+  CheckCircleIcon,
+} from "@heroicons/react/24/outline";
 
 function Services() {
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Services | Solvarch";
@@ -10,6 +19,7 @@ function Services() {
       id: "managed-it",
       title: "Managed IT",
       lead: "End-to-end support for your users, devices, and network.",
+      icon: ShieldCheckIcon,
       deliverables: [
         "24/7 monitoring and alerting",
         "Patch and update management",
@@ -21,6 +31,7 @@ function Services() {
       id: "cyber-security",
       title: "Cyber Security",
       lead: "Protect identities, endpoints, and data with layered controls.",
+      icon: CpuChipIcon,
       deliverables: [
         "Endpoint protection and EDR",
         "Multi-factor authentication rollout",
@@ -32,6 +43,7 @@ function Services() {
       id: "cloud",
       title: "Cloud & Microsoft 365",
       lead: "Modern collaboration and file access without the chaos.",
+      icon: CloudArrowUpIcon,
       deliverables: [
         "Best-practice Microsoft 365 setup",
         "File and email migrations",
@@ -43,6 +55,7 @@ function Services() {
       id: "strategy",
       title: "Strategy & Advisory",
       lead: "Turn IT into a roadmap, not a to-do list.",
+      icon: BuildingOffice2Icon,
       deliverables: [
         "Quarterly IT and risk reviews",
         "Budgeting and roadmap planning",
@@ -90,15 +103,17 @@ function Services() {
                 id={svc.id}
                 className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200/70"
               >
-                <div className="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-cyan-50 text-sm text-cyan-600">
-                  ✦
+                <div className="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-cyan-50 text-cyan-600">
+                  <svc.icon className="h-5 w-5" />
                 </div>
                 <h2 className="text-xl font-semibold text-slate-900">{svc.title}</h2>
                 <p className="mt-2 text-sm text-slate-600">{svc.lead}</p>
                 <ul className="mt-4 space-y-2 text-sm text-slate-600">
                   {svc.deliverables.map((item) => (
                     <li key={item} className="flex gap-2">
-                      <span className="mt-1 text-cyan-500">•</span>
+                      <span className="mt-1 text-cyan-500">
+                        <CheckCircleIcon className="h-4 w-4" />
+                      </span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -112,7 +127,11 @@ function Services() {
                 We&apos;ll walk you through options for support hours, response
                 times, and security controls based on your risk profile.
               </p>
-              <button className="mt-4 rounded-2xl bg-white px-4 py-2 text-sm font-semibold text-cyan-700 shadow-md hover:bg-cyan-50">
+              <button
+                type="button"
+                onClick={() => navigate("/contact")}
+                className="mt-4 rounded-2xl bg-white px-4 py-2 text-sm font-semibold text-cyan-700 shadow-md hover:bg-cyan-50"
+              >
                 Book plan comparison
               </button>
             </div>

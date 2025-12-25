@@ -1,4 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
+import { EnvelopeIcon, PhoneIcon, MapPinIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
 
 function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -28,15 +29,33 @@ function Contact() {
           </p>
 
           <div className="mt-6 space-y-3 text-sm text-slate-700">
-            <p>Email: hello@solvarch.com.au</p>
-            <p>Phone: (02) 0000 0000</p>
-            <p>Location: Sydney, NSW</p>
+            <p className="flex items-center gap-2">
+              <EnvelopeIcon className="h-4 w-4 text-cyan-600" />
+              <span>hello@solvarch.com.au</span>
+            </p>
+            <p className="flex items-center gap-2">
+              <PhoneIcon className="h-4 w-4 text-cyan-600" />
+              <span>(02) 0000 0000</span>
+            </p>
+            <p className="flex items-center gap-2">
+              <MapPinIcon className="h-4 w-4 text-cyan-600" />
+              <span>Sydney, NSW</span>
+            </p>
           </div>
 
           <ul className="mt-6 space-y-2 text-sm text-slate-600">
-            <li>• No hard sell – just clear options.</li>
-            <li>• Advice from senior engineers, not call-centre scripts.</li>
-            <li>• We can start with a quick health check or roadmap session.</li>
+            <li className="flex items-start gap-2">
+              <CheckCircleIcon className="mt-0.5 h-4 w-4 text-cyan-500" />
+              <span>No hard sell – just clear options.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircleIcon className="mt-0.5 h-4 w-4 text-cyan-500" />
+              <span>Advice from senior engineers, not call-centre scripts.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircleIcon className="mt-0.5 h-4 w-4 text-cyan-500" />
+              <span>We can start with a quick health check or roadmap session.</span>
+            </li>
           </ul>
         </div>
 

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { ArrowTrendingUpIcon, ClockIcon, ShieldCheckIcon } from "@heroicons/react/24/outline";
 
 function Outcomes() {
   useEffect(() => {
@@ -6,9 +7,9 @@ function Outcomes() {
     document.title = "Business Outcomes | Solvarch";
   }, []);
   const stats = [
-    { label: "Uptime", value: "99.9%" },
-    { label: "Cost reduction", value: "30%" },
-    { label: "Avg. response", value: "< 15m" },
+    { label: "Uptime", value: "99.9%", icon: ShieldCheckIcon },
+    { label: "Cost reduction", value: "30%", icon: ArrowTrendingUpIcon },
+    { label: "Avg. response", value: "< 15m", icon: ClockIcon },
   ];
 
   const rows = [
@@ -44,9 +45,14 @@ function Outcomes() {
 
         <section className="mt-8 grid gap-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200/70 md:grid-cols-3">
           {stats.map((s) => (
-            <div key={s.label} className="space-y-1">
-              <p className="text-2xl font-extrabold text-slate-900">{s.value}</p>
-              <p className="text-xs text-slate-500">{s.label}</p>
+            <div key={s.label} className="flex items-center gap-3">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-50 text-cyan-600">
+                <s.icon className="h-5 w-5" />
+              </div>
+              <div className="space-y-1">
+                <p className="text-2xl font-extrabold text-slate-900">{s.value}</p>
+                <p className="text-xs text-slate-500">{s.label}</p>
+              </div>
             </div>
           ))}
         </section>
@@ -63,7 +69,15 @@ function Outcomes() {
                 <h2 className="text-xl font-semibold text-slate-900">{row.title}</h2>
                 <p className="mt-2 text-sm text-slate-600">{row.desc}</p>
               </div>
-              <div className="h-40 rounded-2xl bg-gradient-to-br from-cyan-100 via-slate-50 to-slate-200 shadow-inner" />
+              <div className="flex h-40 flex-col justify-between rounded-2xl bg-gradient-to-br from-cyan-100 via-slate-50 to-slate-200 p-4 shadow-inner">
+                <p className="text-xs font-semibold uppercase tracking-wide text-cyan-700">
+                  Example outcome
+                </p>
+                <p className="text-xs text-slate-600">
+                  Visual placeholder for charts or KPIs that your team can replace
+                  with real data when ready.
+                </p>
+              </div>
             </div>
           ))}
         </section>
