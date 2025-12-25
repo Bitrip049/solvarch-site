@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   CpuChipIcon,
   ChartBarIcon,
@@ -6,6 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 function AIEnablement() {
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "AI Enablement | Solvarch";
@@ -27,6 +29,12 @@ function AIEnablement() {
       desc: "Support internal tools and scripts with AI-assisted development.",
       icon: CpuChipIcon,
     },
+  ];
+
+  const kpis = [
+    { label: "Time to first AI use case", value: "~3 months" },
+    { label: "Manual effort reduced", value: "25–40%" },
+    { label: "Teams enabled", value: "4–6 functions" },
   ];
 
   return (
@@ -76,7 +84,9 @@ function AIEnablement() {
             {useCases.map((item) => (
               <article
                 key={item.title}
-                className="rounded-2xl bg-slate-900/80 p-5 shadow-[0_25px_80px_rgba(8,47,73,0.7)] ring-1 ring-cyan-500/30"
+                className="cursor-pointer rounded-2xl bg-slate-900/80 p-5 shadow-[0_25px_80px_rgba(8,47,73,0.7)] ring-1 ring-cyan-500/30 transition hover:-translate-y-0.5 hover:bg-slate-900 hover:ring-cyan-300/60"
+                onClick={() => navigate("/contact")}
+                aria-label={`${item.title} – talk to us about this use case`}
               >
                 <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-cyan-500/20 text-cyan-300">
                   <item.icon className="h-4 w-4" />
@@ -84,6 +94,21 @@ function AIEnablement() {
                 <h3 className="text-sm font-semibold text-slate-50">{item.title}</h3>
                 <p className="mt-2 text-xs text-slate-300">{item.desc}</p>
               </article>
+            ))}
+          </div>
+        </section>
+
+        {/* KPI strip */}
+        <section className="mt-10 rounded-2xl bg-slate-900/80 px-6 py-4 ring-1 ring-cyan-500/30">
+          <h2 className="text-[11px] font-semibold uppercase tracking-wide text-cyan-300">
+            What clients typically see
+          </h2>
+          <div className="mt-3 grid gap-4 text-xs text-slate-300 md:grid-cols-3">
+            {kpis.map((kpi) => (
+              <div key={kpi.label} className="flex flex-col gap-1">
+                <span className="text-[11px] text-slate-400">{kpi.label}</span>
+                <span className="text-sm font-semibold text-slate-50">{kpi.value}</span>
+              </div>
             ))}
           </div>
         </section>
